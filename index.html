@@ -3,586 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamia Public School - Excellence in Education</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts for distinctive typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>EduFlow Ultra | Professional SaaS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #f8fafc;
+        }
+
+        .bento-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+            transform: scale(1.01);
+        }
+
+        .status-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 1; }
+            70% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(0.95); opacity: 1; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .sidebar-text { display: none; }
+            .sidebar-width { width: 80px; }
+        }
+    </style>
 </head>
-<body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="school-logo">
-                    <div class="logo-icon">
-                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-                            <path d="M25 5L5 15V22C5 33.5 12.5 44 25 45C37.5 44 45 33.5 45 22V15L25 5Z" fill="currentColor"/>
-                            <path d="M25 12L15 17V22C15 28 18.5 34 25 35C31.5 34 35 28 35 22V17L25 12Z" fill="white"/>
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        <h1 class="school-name">Isalmia Public School</h1>
-                        <p class="school-subtitle">Excellence in Education Since 1995</p>
-                    </div>
-                </div>
-                
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+<body class="flex flex-col lg:flex-row h-screen overflow-hidden">
+
+    <aside class="sidebar-width w-72 border-r border-white/5 bg-[#030712] hidden lg:flex flex-col p-6 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-10 px-2">
+            <div class="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                <i class="fas fa-bolt text-white"></i>
+            </div>
+            <span class="font-bold text-xl sidebar-text">EduFlow Pro</span>
+        </div>
+
+        <nav class="space-y-2 flex-1">
+            <button onclick="showAlert('Dashboard Loaded')" class="w-full flex items-center gap-4 p-4 rounded-2xl bg-indigo-600/10 text-indigo-400 font-bold transition-all">
+                <i class="fas fa-home"></i> <span class="sidebar-text">Overview</span>
+            </button>
+            <button onclick="showAlert('Users list sync')" class="w-full flex items-center gap-4 p-4 rounded-2xl text-slate-500 hover:bg-white/5 transition-all">
+                <i class="fas fa-user-friends"></i> <span class="sidebar-text">Members</span>
+            </button>
+            <button onclick="showAlert('Reports generating')" class="w-full flex items-center gap-4 p-4 rounded-2xl text-slate-500 hover:bg-white/5 transition-all">
+                <i class="fas fa-chart-line"></i> <span class="sidebar-text">Analytics</span>
+            </button>
+        </nav>
+
+        <div class="bento-card p-4 sidebar-text">
+            <p class="text-xs text-slate-400 mb-2">System Status</p>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full status-dot"></span>
+                <span class="text-xs font-bold uppercase">All Systems Nominal</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 overflow-y-auto bg-[#030712] p-4 md:p-8 lg:p-10 scroll-smooth">
+        
+        <header class="flex flex-wrap justify-between items-center gap-4 mb-8">
+            <div class="flex items-center gap-4">
+                <button class="lg:hidden w-10 h-10 bento-card flex items-center justify-center">
+                    <i class="fas fa-bars"></i>
                 </button>
-                
-                <!-- Navigation -->
-                <nav class="nav-menu" id="navMenu">
-                    <ul>
-                        <li><a href="#home" class="nav-link active">Home</a></li>
-                        <li><a href="#about" class="nav-link">About Us</a></li>
-                        <li><a href="#academics" class="nav-link">Academics</a></li>
-                        <li><a href="#admissions" class="nav-link">Admissions</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </nav>
+                <div class="relative group">
+                    <input type="text" id="globalSearch" onkeyup="liveSearch()" placeholder="Search anything..." 
+                    class="bg-white/5 border border-white/10 rounded-2xl py-3 px-12 text-sm w-48 md:w-80 focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    <i class="fas fa-search absolute left-4 top-4 text-slate-500"></i>
+                </div>
             </div>
-        </div>
-    </header>
 
-    <!-- Home Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-background">
-            <div class="hero-pattern"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">🎓 Empowering Future Leaders</div>
-                <h2 class="hero-title">Where Dreams Take Flight</h2>
-                <p class="hero-tagline">Nurturing minds, building character, inspiring excellence</p>
-                <div class="hero-intro">
-                    <p>Welcome to Islamia Public School, a leading educational institution in Pakistan dedicated to providing world-class education that combines academic excellence with moral values. For over 28 years, we have been shaping young minds and preparing students for a bright future through innovative teaching methods, state-of-the-art facilities, and a nurturing environment that encourages creativity, critical thinking, and character development.</p>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex flex-col text-right">
+                    <span class="text-sm font-bold">Suriya Aijaz</span>
+                    <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Master Admin</span>
                 </div>
-                <div class="hero-buttons">
-                    <a href="#admissions" class="btn btn-primary">Apply Now</a>
-                    <a href="#about" class="btn btn-secondary">Explore More</a>
+                <div class="w-12 h-12 bento-card p-1">
+                    <img src="https://ui-avatars.com/api/?name=ZA&background=6366f1&color=fff" class="rounded-2xl">
                 </div>
             </div>
-            
-            <!-- Key Highlights Cards -->
-            <div class="highlights-grid">
-                <div class="highlight-card">
-                    <div class="highlight-icon">📚</div>
-                    <h3>2500+</h3>
-                    <p>Happy Students</p>
-                </div>
-                <div class="highlight-card">
-                    <div class="highlight-icon">👨‍🏫</div>
-                    <h3>150+</h3>
-                    <p>Expert Teachers</p>
-                </div>
-                <div class="highlight-card">
-                    <div class="highlight-icon">🏆</div>
-                    <h3>98%</h3>
-                    <p>Success Rate</p>
-                </div>
-                <div class="highlight-card">
-                    <div class="highlight-icon">🌟</div>
-                    <h3>28+</h3>
-                    <p>Years of Excellence</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- About Us Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">About Us</span>
-                <h2 class="section-title">Building Tomorrow's Leaders Today</h2>
-            </div>
+        <div class="grid grid-cols-12 gap-6">
             
-            <div class="about-grid">
-                <!-- School History -->
-                <div class="about-card history-card">
-                    <div class="card-icon">📖</div>
-                    <h3>Our History</h3>
-                    <p>Established in 1995, Islamia Public School began with a vision to provide quality education rooted in Islamic values and modern teaching methodologies. What started as a small institution with 50 students has grown into one of the most respected educational institutions in the region, now serving over 2500 students from diverse backgrounds.</p>
-                    <p>Over the years, we have consistently maintained our commitment to excellence, expanding our facilities, adopting innovative teaching methods, and producing outstanding graduates who have excelled in various fields nationally and internationally.</p>
+            <div class="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bento-card p-6 cursor-pointer hover:bg-indigo-600/10" onclick="updateChart(1)">
+                    <p class="text-slate-400 text-xs font-bold uppercase">Active Students</p>
+                    <h2 class="text-3xl font-black mt-2" id="stat-students">1,284</h2>
+                    <p class="text-emerald-500 text-[10px] font-bold mt-2"><i class="fas fa-caret-up"></i> +12.5% vs last month</p>
                 </div>
-                
-                <!-- Mission & Vision -->
-                <div class="about-card mission-card">
-                    <div class="card-icon">🎯</div>
-                    <h3>Our Mission</h3>
-                    <p>To provide holistic education that develops intellectual, spiritual, emotional, and physical capabilities of students, preparing them to become responsible citizens who contribute positively to society.</p>
-                    
-                    <div class="card-icon mt-20"></div>
-                    <h3>Our Vision</h3>
-                    <p>To be recognized as Pakistan's leading educational institution that combines academic excellence with strong moral values, producing well-rounded individuals equipped to face the challenges of the 21st century.</p>
+                <div class="bento-card p-6 cursor-pointer hover:bg-indigo-600/10" onclick="updateChart(2)">
+                    <p class="text-slate-400 text-xs font-bold uppercase">Course Revenue</p>
+                    <h2 class="text-3xl font-black mt-2" id="stat-revenue">$42.5k</h2>
+                    <p class="text-indigo-400 text-[10px] font-bold mt-2"><i class="fas fa-check-circle"></i> Target reached</p>
                 </div>
-                
-                <!-- Principal's Message -->
-                <div class="about-card principal-card">
-                    <div class="card-icon">💼</div>
-                    <h3>Principal's Message</h3>
-                    <div class="principal-info">
-                        <div class="principal-avatar">Prof. Dr. Muhammad Ahmed</div>
-                        <p class="principal-title">Principal, Islamia Public School</p>
+                <div class="bento-card p-6">
+                    <p class="text-slate-400 text-xs font-bold uppercase">Completion Rate</p>
+                    <h2 class="text-3xl font-black mt-2">89%</h2>
+                    <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
+                        <div class="h-full bg-indigo-500" style="width: 89%"></div>
                     </div>
-                    <p class="principal-message">"Dear Parents and Students,</p>
-                    <p>It is my privilege to welcome you to Islamia Public School. Education is not just about academic achievements; it is about nurturing character, building confidence, and developing skills that prepare students for life's journey.</p>
-                    <p>At our institution, we believe every child is unique and possesses unlimited potential. Our dedicated faculty works tirelessly to create an environment where students feel valued, challenged, and inspired to reach their full potential.</p>
-                    <p>We combine traditional values with modern teaching methods, ensuring our students receive an education that is both relevant and rooted in strong moral principles. Together, let us work towards building a brighter future for our children."</p>
-                    <p class="signature">— Prof. Dr. Muhammad Ahmed</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Academics Section -->
-    <section id="academics" class="academics-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Academics</span>
-                <h2 class="section-title">Excellence in Education</h2>
-                <p class="section-subtitle">Comprehensive curriculum designed to nurture young minds</p>
-            </div>
-            
-            <!-- Classes Overview -->
-            <div class="classes-grid">
-                <div class="class-card">
-                    <div class="class-header primary">
-                        <div class="class-icon">🎨</div>
-                        <h3>Primary Classes</h3>
-                        <p class="class-range">Class 1 - 5</p>
-                    </div>
-                    <div class="class-content">
-                        <p>Foundation years focusing on basic literacy, numeracy, and character building through interactive and play-based learning methods.</p>
-                        <ul class="class-features">
-                            <li>✓ Interactive Learning</li>
-                            <li>✓ Creative Activities</li>
-                            <li>✓ Character Building</li>
-                            <li>✓ Sports & Arts</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="class-card">
-                    <div class="class-header middle">
-                        <div class="class-icon">📐</div>
-                        <h3>Middle Classes</h3>
-                        <p class="class-range">Class 6 - 8</p>
-                    </div>
-                    <div class="class-content">
-                        <p>Development phase introducing advanced concepts in sciences, mathematics, and languages with focus on analytical thinking.</p>
-                        <ul class="class-features">
-                            <li>✓ Advanced Curriculum</li>
-                            <li>✓ Science Labs</li>
-                            <li>✓ Project-Based Learning</li>
-                            <li>✓ Leadership Skills</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="class-card">
-                    <div class="class-header secondary">
-                        <div class="class-icon">🎓</div>
-                        <h3>Secondary Classes</h3>
-                        <p class="class-range">Class 9 - 10</p>
-                    </div>
-                    <div class="class-content">
-                        <p>Preparation for board examinations with comprehensive coverage of SSC curriculum and career guidance programs.</p>
-                        <ul class="class-features">
-                            <li>✓ Board Exam Preparation</li>
-                            <li>✓ Career Counseling</li>
-                            <li>✓ Advanced Laboratories</li>
-                            <li>✓ University Guidance</li>
-                        </ul>
+            <div class="col-span-12 lg:col-span-4 bento-card p-6 overflow-hidden">
+                <h3 class="font-bold text-sm mb-6 flex justify-between">
+                    Live Events <span class="bg-indigo-600/20 text-indigo-400 px-2 py-0.5 rounded text-[10px]">Real-time</span>
+                </h3>
+                <div id="activityLog" class="space-y-4 max-h-40 overflow-hidden">
+                    <div class="flex gap-3 items-start animate-pulse">
+                        <div class="w-1.5 h-10 rounded-full bg-indigo-500"></div>
+                        <div>
+                            <p class="text-xs font-bold">System Booting...</p>
+                            <p class="text-[10px] text-slate-500">Initializing dashboards</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Subjects Offered -->
-            <div class="subjects-section">
-                <h3 class="subsection-title">Subjects Offered</h3>
-                <div class="subjects-grid">
-                    <div class="subject-card">
-                        <span class="subject-icon">🔬</span>
-                        <h4>Sciences</h4>
-                        <p>Physics, Chemistry, Biology</p>
-                    </div>
-                    <div class="subject-card">
-                        <span class="subject-icon">📊</span>
-                        <h4>Mathematics</h4>
-                        <p>Pure & Applied Math</p>
-                    </div>
-                    <div class="subject-card">
-                        <span class="subject-icon">🌍</span>
-                        <h4>Languages</h4>
-                        <p>English, Urdu, Arabic</p>
-                    </div>
-                    <div class="subject-card">
-                        <span class="subject-icon">📚</span>
-                        <h4>Social Studies</h4>
-                        <p>History, Geography, Civics</p>
-                    </div>
-                    <div class="subject-card">
-                        <span class="subject-icon">💻</span>
-                        <h4>Computer Science</h4>
-                        <p>Programming & IT</p>
-                    </div>
-                    <div class="subject-card">
-                        <span class="subject-icon">☪️</span>
-                        <h4>Islamic Studies</h4>
-                        <p>Quran, Hadith, Fiqh</p>
+
+            <div class="col-span-12 lg:col-span-9 bento-card p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                    <h2 class="text-xl font-bold">Performance Analytics</h2>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 bg-white/5 rounded-xl text-xs font-bold hover:bg-white/10" onclick="location.reload()">Refresh Data</button>
+                        <button class="px-4 py-2 bg-indigo-600 rounded-xl text-xs font-bold hover:bg-indigo-500 shadow-lg shadow-indigo-600/20">Download PDF</button>
                     </div>
                 </div>
+                <div class="h-64">
+                    <canvas id="performanceChart"></canvas>
+                </div>
             </div>
-            
-            <!-- Timetable Section -->
-            <div class="timetable-section">
-                <h3 class="subsection-title">Daily Schedule</h3>
-                <div class="timetable-card">
-                    <table class="timetable">
-                        <thead>
+
+            <div class="col-span-12 lg:col-span-3 bento-card p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-indigo-900/40 to-transparent border-indigo-500/20">
+                <div class="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-indigo-600 text-3xl mb-4 shadow-2xl">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="font-bold mb-2">AI Summary</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Based on current trends, we expect a <span class="text-indigo-400 font-bold">20% spike</span> in logins during the next 48 hours.</p>
+            </div>
+
+            <div class="col-span-12 bento-card overflow-hidden">
+                <div class="p-6 border-b border-white/5">
+                    <h3 class="font-bold">Member Directory</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left" id="memberTable">
+                        <thead class="bg-white/5 text-[10px] uppercase font-bold text-slate-500">
                             <tr>
-                                <th>Time</th>
-                                <th>Activity</th>
-                                <th>Duration</th>
+                                <th class="px-8 py-4">User Details</th>
+                                <th class="px-6 py-4">Department</th>
+                                <th class="px-6 py-4">Security</th>
+                                <th class="px-8 py-4 text-right">Performance</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>7:45 AM</td>
-                                <td>Morning Assembly</td>
-                                <td>15 minutes</td>
+                        <tbody class="divide-y divide-white/5">
+                            <tr class="hover:bg-white/5 transition-all group cursor-pointer">
+                                <td class="px-8 py-5 flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">SJ</div>
+                                    <span class="text-sm font-bold member-name">Sarah Jenkins</span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-slate-400">Advanced AI</td>
+                                <td class="px-6 py-5"><span class="bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-full text-[10px] font-bold">Admin</span></td>
+                                <td class="px-8 py-5 text-right font-black text-indigo-400">98%</td>
                             </tr>
-                            <tr>
-                                <td>8:00 AM - 9:00 AM</td>
-                                <td>Period 1</td>
-                                <td>60 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>9:00 AM - 10:00 AM</td>
-                                <td>Period 2</td>
-                                <td>60 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>10:00 AM - 10:20 AM</td>
-                                <td>Break Time</td>
-                                <td>20 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>10:20 AM - 11:20 AM</td>
-                                <td>Period 3</td>
-                                <td>60 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>11:20 AM - 12:20 PM</td>
-                                <td>Period 4</td>
-                                <td>60 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>12:20 PM - 1:00 PM</td>
-                                <td>Lunch Break</td>
-                                <td>40 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>1:00 PM - 2:00 PM</td>
-                                <td>Period 5</td>
-                                <td>60 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>2:00 PM</td>
-                                <td>School Dismissal</td>
-                                <td>—</td>
+                            <tr class="hover:bg-white/5 transition-all group cursor-pointer">
+                                <td class="px-8 py-5 flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center font-bold">MK</div>
+                                    <span class="text-sm font-bold member-name">Mike Ross</span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-slate-400">Cyber Security</td>
+                                <td class="px-6 py-5"><span class="bg-slate-500/10 text-slate-400 px-3 py-1 rounded-full text-[10px] font-bold">Student</span></td>
+                                <td class="px-8 py-5 text-right font-black text-indigo-400">76%</td>
                             </tr>
                         </tbody>
                     </table>
-                    <p class="timetable-note">* Extra-curricular activities from 2:00 PM - 3:30 PM (Optional)</p>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Admissions Section -->
-    <section id="admissions" class="admissions-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Admissions</span>
-                <h2 class="section-title">Join Our School Family</h2>
-                <p class="section-subtitle">Admissions Open for Academic Year 2026-2027</p>
-            </div>
-            
-            <!-- Admission Notice -->
-            <div class="admission-notice">
-                <div class="notice-icon">📢</div>
-                <div class="notice-content">
-                    <h3>Admissions Now Open!</h3>
-                    <p>We are now accepting applications for the academic year 2026-2027 for all classes from Nursery to Class 10. Limited seats available. Apply early to secure your child's place!</p>
-                    <p class="notice-deadline"><strong>Last Date to Apply:</strong> March 31, 2026</p>
-                </div>
-            </div>
-            
-            <!-- Admission Process -->
-            <div class="process-section">
-                <h3 class="subsection-title">Admission Process</h3>
-                <div class="process-steps">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h4>Submit Application</h4>
-                        <p>Download and fill the admission form from our office or website. Submit with required documents.</p>
-                    </div>
-                    <div class="step-arrow">→</div>
-                    
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h4>Entrance Test</h4>
-                        <p>Appear for the entrance test (for Class 1 and above). Primary focus on basic knowledge assessment.</p>
-                    </div>
-                    <div class="step-arrow">→</div>
-                    
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h4>Interview</h4>
-                        <p>Parent-student interview with school administration to understand expectations and goals.</p>
-                    </div>
-                    <div class="step-arrow">→</div>
-                    
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h4>Admission Confirmation</h4>
-                        <p>Receive admission decision within 7 days. Complete fee payment and enrollment formalities.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Eligibility Criteria -->
-            <div class="eligibility-section">
-                <h3 class="subsection-title">Eligibility Criteria</h3>
-                <div class="eligibility-grid">
-                    <div class="eligibility-card">
-                        <h4>Age Requirements</h4>
-                        <ul>
-                            <li><strong>Nursery:</strong> 3 years (as of March 31, 2026)</li>
-                            <li><strong>Class 1:</strong> 5 years (as of March 31, 2026)</li>
-                            <li><strong>Other Classes:</strong> Age appropriate to class</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="eligibility-card">
-                        <h4>Required Documents</h4>
-                        <ul>
-                            <li>Completed admission form</li>
-                            <li>Copy of birth certificate</li>
-                            <li>Copy of student's B-Form/CNIC</li>
-                            <li>Copy of parents' CNIC</li>
-                            <li>Previous school leaving certificate (if applicable)</li>
-                            <li>Recent passport-size photographs (4 copies)</li>
-                            <li>Medical fitness certificate</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="eligibility-card">
-                        <h4>Admission Fee Structure</h4>
-                        <ul>
-                            <li><strong>Primary Section:</strong> PKR 25,000</li>
-                            <li><strong>Middle Section:</strong> PKR 30,000</li>
-                            <li><strong>Secondary Section:</strong> PKR 35,000</li>
-                            <li><em>* Monthly fees separate, payable in advance</em></li>
-                            <li><em>* Sibling discount: 10% on admission fee</em></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded-2xl font-bold text-sm shadow-2xl transition-all duration-500 opacity-0 translate-y-10 z-50">
+        System Updated!
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Contact Us</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">We're here to answer your questions</p>
-            </div>
-            
-            <div class="contact-grid">
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="info-cards">
-                        <div class="info-card">
-                            <div class="info-icon">📍</div>
-                            <div class="info-content">
-                                <h4>Address</h4>
-                                <p><br>Ghotki, Sindh 6050<br>Pakistan</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">📞</div>
-                            <div class="info-content">
-                                <h4>Phone Numbers</h4>
-                                <p>Office: +92-21-34982456<br>Principal: +92-21-34982457<br>Admissions: +92-300-1234567</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">✉️</div>
-                            <div class="info-content">
-                                <h4>Email</h4>
-                                <p>info@IBAschool.edu.pk<br>admissions@IBAschool.edu.pk<br>principal@IBAschool.edu.pk</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">🕐</div>
-                            <div class="info-content">
-                                <h4>Office Hours</h4>
-                                <p>Monday - Friday: 8:00 AM - 3:00 PM<br>Saturday: 8:00 AM - 1:00 PM<br>Sunday: Closed</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Contact Form -->
-                <div class="contact-form-wrapper">
-                    <h3>Send Us a Message</h3>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="+92-300-0000000">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="admission">Admission Inquiry</option>
-                                <option value="academic">Academic Information</option>
-                                <option value="general">General Query</option>
-                                <option value="feedback">Feedback</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Islamia Public School</h4>
-                    <p>Empowering minds, nurturing values, building futures since 1995.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#academics">Academics</a></li>
-                        <li><a href="#admissions">Admissions</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>📞 +92-21-34982456</li>
-                        <li>✉️ info@IBAschool.edu.pk</li>
-                        <li>📍 Ghotki, Sindh 6050</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Islamia Public School. All Rights Reserved.</p>
-                <p>Designed with ❤️ for Excellence in Education</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Simple JavaScript for Navigation and Mobile Menu -->
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                // Update active state
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Smooth scroll
-                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                
-                // Close mobile menu if open
-                document.getElementById('navMenu').classList.remove('active');
-            });
-        });
-        
-        // Mobile menu toggle
-        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-        
-        // Form submission handler (basic)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
-        
-        // Update active nav on scroll
-        window.addEventListener('scroll', function() {
-            let current = '';
-            const sections = document.querySelectorAll('section');
+        // 1. Live Search Logic
+        function liveSearch() {
+            let input = document.getElementById('globalSearch').value.toLowerCase();
+            let rows = document.querySelectorAll('#memberTable tbody tr');
             
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
+            rows.forEach(row => {
+                let name = row.querySelector('.member-name').innerText.toLowerCase();
+                row.style.display = name.includes(input) ? '' : 'none';
             });
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
+        }
+
+        // 2. Chart Logic (Responsive)
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        let perfChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Platform Usage',
+                    data: [65, 59, 80, 81, 56, 95, 120],
+                    borderColor: '#6366f1',
+                    borderWidth: 4,
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    pointRadius: 6,
+                    pointBackgroundColor: '#6366f1',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { border: { display: false }, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
+                    x: { grid: { display: false }, ticks: { color: '#64748b' } }
                 }
-            });
+            }
         });
+
+        // 3. Dynamic Stats Update
+        function updateChart(id) {
+            const dataSets = [
+                [65, 59, 80, 81, 56, 95, 120],
+                [40, 48, 40, 50, 60, 70, 65],
+                [10, 20, 15, 30, 45, 40, 55]
+            ];
+            perfChart.data.datasets[0].data = dataSets[id-1] || dataSets[0];
+            perfChart.update();
+            showAlert('Updating data metrics...');
+        }
+
+        // 4. Real-time Activity Feed Simulation
+        const activities = [
+            { title: "New Enrollment", desc: "User #442 joined AI course", color: "bg-emerald-500" },
+            { title: "Invoice Paid", desc: "Enterprise plan renewal", color: "bg-indigo-500" },
+            { title: "Alert", desc: "High traffic from Europe", color: "bg-orange-500" }
+        ];
+
+        setInterval(() => {
+            const log = document.getElementById('activityLog');
+            const act = activities[Math.floor(Math.random() * activities.length)];
+            const div = document.createElement('div');
+            div.className = "flex gap-3 items-start animate-fade-in";
+            div.innerHTML = `
+                <div class="w-1.5 h-10 rounded-full ${act.color}"></div>
+                <div>
+                    <p class="text-xs font-bold">${act.title}</p>
+                    <p class="text-[10px] text-slate-500">${act.desc}</p>
+                </div>
+            `;
+            log.prepend(div);
+            if (log.children.length > 5) log.removeChild(log.lastChild);
+        }, 5000);
+
+        // 5. Toast Notification Logic
+        function showAlert(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.remove('opacity-0', 'translate-y-10');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3000);
+        }
     </script>
 </body>
 </html>
