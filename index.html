@@ -1,300 +1,126 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduFlow Ultra | Professional SaaS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #030712;
-            color: #f8fafc;
-        }
 
-        .bento-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 28px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    <title>Onlearning - Grow Your Skills</title>
 
-        .bento-card:hover {
-            border-color: #6366f1;
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
-            transform: scale(1.01);
-        }
+    <link rel="stylesheet" href="style.css">
 
-        .status-dot {
-            animation: pulse 2s infinite;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 1; }
-            70% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(0.95); opacity: 1; }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .sidebar-text { display: none; }
-            .sidebar-width { width: 80px; }
-        }
-    </style>
 </head>
-<body class="flex flex-col lg:flex-row h-screen overflow-hidden">
 
-    <aside class="sidebar-width w-72 border-r border-white/5 bg-[#030712] hidden lg:flex flex-col p-6 transition-all duration-300">
-        <div class="flex items-center gap-3 mb-10 px-2">
-            <div class="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                <i class="fas fa-bolt text-white"></i>
+<body>
+
+    <header class="main-header">
+
+        <nav class="navbar">
+            <div class="logo">
+
+                <img src="Frame 237646 (1).png" alt="Onlearn Logo">
+
             </div>
-            <span class="font-bold text-xl sidebar-text">EduFlow Pro</span>
-        </div>
 
-        <nav class="space-y-2 flex-1">
-            <button onclick="showAlert('Dashboard Loaded')" class="w-full flex items-center gap-4 p-4 rounded-2xl bg-indigo-600/10 text-indigo-400 font-bold transition-all">
-                <i class="fas fa-home"></i> <span class="sidebar-text">Overview</span>
-            </button>
-            <button onclick="showAlert('Users list sync')" class="w-full flex items-center gap-4 p-4 rounded-2xl text-slate-500 hover:bg-white/5 transition-all">
-                <i class="fas fa-user-friends"></i> <span class="sidebar-text">Members</span>
-            </button>
-            <button onclick="showAlert('Reports generating')" class="w-full flex items-center gap-4 p-4 rounded-2xl text-slate-500 hover:bg-white/5 transition-all">
-                <i class="fas fa-chart-line"></i> <span class="sidebar-text">Analytics</span>
-            </button>
+            <ul class="nav-links">
+
+                <li><a href="#" class="active">Home</a></li>
+
+                <li><a href="#">Careers</a></li>
+
+                <li><a href="#">Blog</a></li>
+
+                <li><a href="#">About Us</a></li>
+
+            </ul>
+
+            <div class="auth-group">
+
+                <button class="btn-login">LOG IN</button>
+
+                <button class="btn-signup">SIGN UP</button>
+
+            </div>
+
         </nav>
 
-        <div class="bento-card p-4 sidebar-text">
-            <p class="text-xs text-slate-400 mb-2">System Status</p>
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full status-dot"></span>
-                <span class="text-xs font-bold uppercase">All Systems Nominal</span>
+    </header>
+
+
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+           
+
+            <div class="hero-text">
+
+                <span class="badge">Never stop learning</span>
+
+               
+
+                <span class="teal text"> <h1>Grow up your skills by <br> online courses with  <br>online learning</h1> </span>
+                <div class="cta-row">
+
+                    <button class="btn-explore">EXPLORE PATH</button>
+
+                    <div class="reviews">
+
+                        <img src="Button.png" alt="Reviews and Avatars" class="review-img">
+
+                    </div>
+
+                </div>
+
+
+            <div class="hero-visual">
+
+                <div class="image-wrapper">
+
+                    <img src="image-uM5ZOTW7R-transformed 1.png" alt="Student" class="main-img">
+
+                   
+
+                    <div class="floating-card stats-card">
+
+                        <img src="Group 7 (1).png" alt="Stats Icon">
+
+                    </div>
+
+
+
+                    <div class="floating-card orange-icon">
+
+                        <img src="Group 9.png" alt="Orange Icon">
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
-    </aside>
+    </section>
 
-    <main class="flex-1 overflow-y-auto bg-[#030712] p-4 md:p-8 lg:p-10 scroll-smooth">
-        
-        <header class="flex flex-wrap justify-between items-center gap-4 mb-8">
-            <div class="flex items-center gap-4">
-                <button class="lg:hidden w-10 h-10 bento-card flex items-center justify-center">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="relative group">
-                    <input type="text" id="globalSearch" onkeyup="liveSearch()" placeholder="Search anything..." 
-                    class="bg-white/5 border border-white/10 rounded-2xl py-3 px-12 text-sm w-48 md:w-80 focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
-                    <i class="fas fa-search absolute left-4 top-4 text-slate-500"></i>
-                </div>
-            </div>
+<div class="floating-play-container">
 
-            <div class="flex items-center gap-4">
-                <div class="hidden md:flex flex-col text-right">
-                    <span class="text-sm font-bold">Suriya Aijaz</span>
-                    <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Master Admin</span>
-                </div>
-                <div class="w-12 h-12 bento-card p-1">
-                    <img src="https://ui-avatars.com/api/?name=ZA&background=6366f1&color=fff" class="rounded-2xl">
-                </div>
-            </div>
-        </header>
+        <div class="ellipse-3">
 
-        <div class="grid grid-cols-12 gap-6">
-            
-            <div class="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bento-card p-6 cursor-pointer hover:bg-indigo-600/10" onclick="updateChart(1)">
-                    <p class="text-slate-400 text-xs font-bold uppercase">Active Students</p>
-                    <h2 class="text-3xl font-black mt-2" id="stat-students">1,284</h2>
-                    <p class="text-emerald-500 text-[10px] font-bold mt-2"><i class="fas fa-caret-up"></i> +12.5% vs last month</p>
-                </div>
-                <div class="bento-card p-6 cursor-pointer hover:bg-indigo-600/10" onclick="updateChart(2)">
-                    <p class="text-slate-400 text-xs font-bold uppercase">Course Revenue</p>
-                    <h2 class="text-3xl font-black mt-2" id="stat-revenue">$42.5k</h2>
-                    <p class="text-indigo-400 text-[10px] font-bold mt-2"><i class="fas fa-check-circle"></i> Target reached</p>
-                </div>
-                <div class="bento-card p-6">
-                    <p class="text-slate-400 text-xs font-bold uppercase">Completion Rate</p>
-                    <h2 class="text-3xl font-black mt-2">89%</h2>
-                    <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
-                        <div class="h-full bg-indigo-500" style="width: 89%"></div>
-                    </div>
-                </div>
-            </div>
+    <img src="Group 10.png" alt="Explore More Play Button" class="group-10-image">
 
-            <div class="col-span-12 lg:col-span-4 bento-card p-6 overflow-hidden">
-                <h3 class="font-bold text-sm mb-6 flex justify-between">
-                    Live Events <span class="bg-indigo-600/20 text-indigo-400 px-2 py-0.5 rounded text-[10px]">Real-time</span>
-                </h3>
-                <div id="activityLog" class="space-y-4 max-h-40 overflow-hidden">
-                    <div class="flex gap-3 items-start animate-pulse">
-                        <div class="w-1.5 h-10 rounded-full bg-indigo-500"></div>
-                        <div>
-                            <p class="text-xs font-bold">System Booting...</p>
-                            <p class="text-[10px] text-slate-500">Initializing dashboards</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+</div>
 
-            <div class="col-span-12 lg:col-span-9 bento-card p-8">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-                    <h2 class="text-xl font-bold">Performance Analytics</h2>
-                    <div class="flex gap-2">
-                        <button class="px-4 py-2 bg-white/5 rounded-xl text-xs font-bold hover:bg-white/10" onclick="location.reload()">Refresh Data</button>
-                        <button class="px-4 py-2 bg-indigo-600 rounded-xl text-xs font-bold hover:bg-indigo-500 shadow-lg shadow-indigo-600/20">Download PDF</button>
-                    </div>
-                </div>
-                <div class="h-64">
-                    <canvas id="performanceChart"></canvas>
-                </div>
-            </div>
+</div>
 
-            <div class="col-span-12 lg:col-span-3 bento-card p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-indigo-900/40 to-transparent border-indigo-500/20">
-                <div class="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-indigo-600 text-3xl mb-4 shadow-2xl">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3 class="font-bold mb-2">AI Summary</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">Based on current trends, we expect a <span class="text-indigo-400 font-bold">20% spike</span> in logins during the next 48 hours.</p>
-            </div>
 
-            <div class="col-span-12 bento-card overflow-hidden">
-                <div class="p-6 border-b border-white/5">
-                    <h3 class="font-bold">Member Directory</h3>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left" id="memberTable">
-                        <thead class="bg-white/5 text-[10px] uppercase font-bold text-slate-500">
-                            <tr>
-                                <th class="px-8 py-4">User Details</th>
-                                <th class="px-6 py-4">Department</th>
-                                <th class="px-6 py-4">Security</th>
-                                <th class="px-8 py-4 text-right">Performance</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5">
-                            <tr class="hover:bg-white/5 transition-all group cursor-pointer">
-                                <td class="px-8 py-5 flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">SJ</div>
-                                    <span class="text-sm font-bold member-name">Sarah Jenkins</span>
-                                </td>
-                                <td class="px-6 py-5 text-xs text-slate-400">Advanced AI</td>
-                                <td class="px-6 py-5"><span class="bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-full text-[10px] font-bold">Admin</span></td>
-                                <td class="px-8 py-5 text-right font-black text-indigo-400">98%</td>
-                            </tr>
-                            <tr class="hover:bg-white/5 transition-all group cursor-pointer">
-                                <td class="px-8 py-5 flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center font-bold">MK</div>
-                                    <span class="text-sm font-bold member-name">Mike Ross</span>
-                                </td>
-                                <td class="px-6 py-5 text-xs text-slate-400">Cyber Security</td>
-                                <td class="px-6 py-5"><span class="bg-slate-500/10 text-slate-400 px-3 py-1 rounded-full text-[10px] font-bold">Student</span></td>
-                                <td class="px-8 py-5 text-right font-black text-indigo-400">76%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </main>
 
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded-2xl font-bold text-sm shadow-2xl transition-all duration-500 opacity-0 translate-y-10 z-50">
-        System Updated!
-    </div>
+    ...
 
-    <script>
-        // 1. Live Search Logic
-        function liveSearch() {
-            let input = document.getElementById('globalSearch').value.toLowerCase();
-            let rows = document.querySelectorAll('#memberTable tbody tr');
-            
-            rows.forEach(row => {
-                let name = row.querySelector('.member-name').innerText.toLowerCase();
-                row.style.display = name.includes(input) ? '' : 'none';
-            });
-        }
-
-        // 2. Chart Logic (Responsive)
-        const ctx = document.getElementById('performanceChart').getContext('2d');
-        let perfChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [{
-                    label: 'Platform Usage',
-                    data: [65, 59, 80, 81, 56, 95, 120],
-                    borderColor: '#6366f1',
-                    borderWidth: 4,
-                    tension: 0.4,
-                    fill: true,
-                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                    pointRadius: 6,
-                    pointBackgroundColor: '#6366f1',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { border: { display: false }, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
-                    x: { grid: { display: false }, ticks: { color: '#64748b' } }
-                }
-            }
-        });
-
-        // 3. Dynamic Stats Update
-        function updateChart(id) {
-            const dataSets = [
-                [65, 59, 80, 81, 56, 95, 120],
-                [40, 48, 40, 50, 60, 70, 65],
-                [10, 20, 15, 30, 45, 40, 55]
-            ];
-            perfChart.data.datasets[0].data = dataSets[id-1] || dataSets[0];
-            perfChart.update();
-            showAlert('Updating data metrics...');
-        }
-
-        // 4. Real-time Activity Feed Simulation
-        const activities = [
-            { title: "New Enrollment", desc: "User #442 joined AI course", color: "bg-emerald-500" },
-            { title: "Invoice Paid", desc: "Enterprise plan renewal", color: "bg-indigo-500" },
-            { title: "Alert", desc: "High traffic from Europe", color: "bg-orange-500" }
-        ];
-
-        setInterval(() => {
-            const log = document.getElementById('activityLog');
-            const act = activities[Math.floor(Math.random() * activities.length)];
-            const div = document.createElement('div');
-            div.className = "flex gap-3 items-start animate-fade-in";
-            div.innerHTML = `
-                <div class="w-1.5 h-10 rounded-full ${act.color}"></div>
-                <div>
-                    <p class="text-xs font-bold">${act.title}</p>
-                    <p class="text-[10px] text-slate-500">${act.desc}</p>
-                </div>
-            `;
-            log.prepend(div);
-            if (log.children.length > 5) log.removeChild(log.lastChild);
-        }, 5000);
-
-        // 5. Toast Notification Logic
-        function showAlert(msg) {
-            const toast = document.getElementById('toast');
-            toast.innerText = msg;
-            toast.classList.remove('opacity-0', 'translate-y-10');
-            toast.classList.add('opacity-100', 'translate-y-0');
-            
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-10');
-                toast.classList.remove('opacity-100', 'translate-y-0');
-            }, 3000);
-        }
-    </script>
 </body>
+
 </html>
